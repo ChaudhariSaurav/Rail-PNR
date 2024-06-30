@@ -76,7 +76,12 @@ const PnrStatus = () => {
               />
             </Col>
             <Col xs={24} sm={6}>
-              <Button type="primary" onClick={fetchPnrStatus} block>
+              <Button
+                type="primary"
+                size="large"
+                onClick={fetchPnrStatus}
+                block
+              >
                 Fetch PNR Status
               </Button>
             </Col>
@@ -170,6 +175,14 @@ const PnrStatus = () => {
                       {passenger.currentSeatDetails}
                     </Text>
                   </Col>
+                  {passenger.confirmProb !== undefined && (
+                    <Col xs={24}>
+                      <Text>
+                        <strong>Confirmation Probability:</strong>{" "}
+                        {passenger.confirmProb}%
+                      </Text>
+                    </Col>
+                  )}
                 </Row>
               ))}
               <Row className="mt-4">
