@@ -12,12 +12,12 @@ import {
   Alert,
 } from "antd";
 import moment from "moment";
+import "./App.css";
 import {
   ClockCircleOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
-
 
 const { Title, Text } = Typography;
 
@@ -35,7 +35,7 @@ const PnrStatus = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://7a1f3fef-2acf-48f7-808f-faa9401675a7-00-h3u9shjdvpui.sisko.replit.dev/api/getPnrData?pnrno=${pnr}`,
+        `https://redbus-backend-whco.onrender.com/api/getPnrData?pnrno=${pnr}`,
       );
       if (response.data.errorcode === "712") {
         setError(response.data.errormsg); // Set specific error message
