@@ -67,6 +67,7 @@ const PnrStatus = () => {
               <Input
                 placeholder="Enter PNR number"
                 value={pnr}
+                size="large"
                 maxLength={10}
                 onChange={(e) => {
                   setPnr(e.target.value);
