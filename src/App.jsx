@@ -19,7 +19,6 @@ import {
   ClockCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
-import Navbar from "./Navbar";
 import "./App.css"; 
 const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
@@ -70,8 +69,6 @@ const App = () => {
 
   return (
     <Layout>
-      <Navbar />
-
       <Content>
         <div className="mx-auto p-5 m-5">
           <Card
