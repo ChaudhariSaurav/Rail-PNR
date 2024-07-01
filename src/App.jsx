@@ -19,7 +19,7 @@ import {
   ClockCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
-import "./App.css"; 
+import "./App.css";
 const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 const { Item } = Form;
@@ -37,11 +37,16 @@ const App = () => {
     }
     setLoading(true);
     try {
+      setLoading(true);
       const response = await axios.get(
         `https://redbus-backend-whco.onrender.com/api/getPnrData?pnrno=${pnr}`,
       );
+
       if (response.data.errorcode === "712") {
         setError(response.data.errormsg);
+        setStatus(null);
+      } else if (response.data.errorcode === "100.7") {
+        setError(response.data.detailedmsg);
         setStatus(null);
       } else {
         setStatus(response.data);
