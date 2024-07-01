@@ -74,9 +74,8 @@ const App = () => {
       <Navbar />
 
       <Content>
-        <div className="mx-auto">
+        <div className="mx-auto p-5 m-5">
           <Card
-            title="PNR Status"
             className="border-orangered-500 custom-card"
             bordered={true}
             style={{
@@ -127,6 +126,9 @@ const App = () => {
               <Alert
                 message={
                   <div>
+                    <Text className="text-left mb-6 block bg-green-300 border border-green-500 p-2 rounded-md text-green-800 font-bold">
+                      {status.overallStatus}
+                    </Text>
                     <Divider />
                     <Title level={4}>PNR Details : {status.pnrNo}</Title>
                     <Row gutter={[16, 16]}>
@@ -234,12 +236,12 @@ const App = () => {
                           )}
                         </Row>
                         {index < status.passengers.length - 1 && <Divider />}{" "}
-                        {/* Show divider except after the last passenger */}
                       </div>
                     ))}
                     <Row className="mt-4">
                       <Col className="flex justify-end">
                         <CheckCircleOutlined className="text-green-500 text-3xl" />
+                        <Text className="italic"> {status.pnrLastUpdated}</Text>
                       </Col>
                     </Row>
                   </div>
@@ -248,8 +250,17 @@ const App = () => {
               />
             )}
           </Card>
+          <div className="p-5">
+            <Alert
+              message="Disclaimer"
+              description="This feature has no affiliation with IRCTC. IRCTC will be responsible for any liability occurring due to this information."
+              type="warning"
+              showIcon
+            />
+          </div>
         </div>
       </Content>
+
       <Footer style={{ textAlign: "center" }}>
         Saurav Chaudhary &copy; {new Date().getFullYear()}
       </Footer>

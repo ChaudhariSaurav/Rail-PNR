@@ -28,6 +28,7 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "moment": "^2.30.1",
-    "postcss": "^8.4.39"
+    "postcss": "^8.4.39",
+    "react-router-dom": "^6.24.0"
   }
 }

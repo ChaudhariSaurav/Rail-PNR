@@ -1,6 +1,7 @@
 // Navbar.js
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,9 +56,9 @@ const Navbar = () => {
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0">
-              <a href="/" className="text-white text-lg font-semibold">
-                Logo
-              </a>
+              <Link to={"/"} className="text-white text-lg font-semibold">
+                PNR ENQUIRY
+              </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
