@@ -20,8 +20,7 @@ import {
   CloseCircleOutlined,
 } from "@ant-design/icons";
 import Navbar from "./Navbar";
-import "./App.css"; // Import custom styles
-
+import "./App.css"; 
 const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 const { Item } = Form;
