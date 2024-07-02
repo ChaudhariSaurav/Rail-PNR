@@ -20,6 +20,7 @@ import {
   CloseCircleOutlined,
 } from "@ant-design/icons";
 import "./App.css";
+import FooterUser from "./countUser";
 const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 const { Item } = Form;
@@ -75,7 +76,7 @@ const App = () => {
   return (
     <Layout>
       <Content>
-        <div className="mx-auto p-5 m-5">
+        <div className="mx-auto p-2 m-5">
           <Card
             className="border-orangered-500 custom-card"
             bordered={true}
@@ -127,9 +128,18 @@ const App = () => {
               <Alert
                 message={
                   <div>
-                    <Text className="text-left mb-6 block bg-green-300 border border-green-500 p-2 rounded-md text-green-800 font-bold">
+                    <Text
+                      className={`text-left mb-6 block border p-2 rounded-md font-bold ${
+                        status.overallStatus === "Your Ticket is Confirmed"
+                          ? "bg-green-300 border-green-500 text-green-800"
+                          : status.overallStatus === "Your Ticket is Waitlisted"
+                            ? "bg-[#fff2f0] border-[#ffccc7] text-red-800" // Adjust text color as needed
+                            : "" // Add more conditions if necessary
+                      }`}
+                    >
                       {status.overallStatus}
                     </Text>
+
                     <Divider />
                     <Title level={4}>PNR Details : {status.pnrNo}</Title>
                     <Row gutter={[16, 16]}>
@@ -251,19 +261,19 @@ const App = () => {
               />
             )}
           </Card>
-          <div className="p-5">
-            <Alert
-              message="Disclaimer"
-              description="This feature has no affiliation with IRCTC. IRCTC will be responsible for any liability occurring due to this information."
-              type="warning"
-              showIcon
-            />
-          </div>
+        </div>
+        <div className="p-2">
+          <Alert
+            message="Disclaimer"
+            description="This feature has no affiliation with IRCTC. IRCTC will be responsible for any liability occurring due to this information."
+            type="warning"
+            showIcon
+          />
         </div>
       </Content>
 
       <Footer style={{ textAlign: "center" }}>
-        Saurav Chaudhary &copy; {new Date().getFullYear()}
+        <FooterUser />
       </Footer>
     </Layout>
   );
