@@ -44,10 +44,10 @@ const App = () => {
       );
 
       if (response.data.errorcode === "712") {
-        setError(response.data.errormsg);
+        setError(response.data.detailedmsg);
         setStatus(null);
       } else if (response.data.errorcode === "100.7") {
-        setError(response.data.detailedmsg);
+        setError(response.data.errormsg);
         setStatus(null);
       } else {
         setStatus(response.data);
