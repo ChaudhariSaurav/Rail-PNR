@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import {
@@ -21,9 +21,28 @@ import {
 } from "@ant-design/icons";
 import "./App.css";
 import FooterUser from "./countUser";
-const { Content, Footer } = Layout;
+
+const { Header, Content, Footer } = Layout;
 const { Title, Text } = Typography;
 const { Item } = Form;
+
+const Clock = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <div style={{ color: "white", fontSize: "16px" }}>
+      {time.toLocaleTimeString()}
+    </div>
+  );
+};
 
 const App = () => {
   const [pnr, setPnr] = useState("");
@@ -38,7 +57,6 @@ const App = () => {
     }
     setLoading(true);
     try {
-      setLoading(true);
       const response = await axios.get(
         `https://redbus-backend-whco.onrender.com/api/getPnrData?pnrno=${pnr}`,
       );
@@ -75,6 +93,18 @@ const App = () => {
 
   return (
     <Layout>
+      <Header style={{ background: "#001529", padding: "0 20px" }}>
+        <Row justify="space-between" align="middle" style={{ height: "100%" }}>
+          <Col>
+            <div className="logo" style={{ color: "white", fontSize: "20px" }}>
+              PNR Status Check
+            </div>
+          </Col>
+          <Col>
+            <Clock />
+          </Col>
+        </Row>
+      </Header>
       <Content>
         <div className="mx-auto p-2 m-5">
           <Card
@@ -246,7 +276,7 @@ const App = () => {
                             </Col>
                           )}
                         </Row>
-                        {index < status.passengers.length - 1 && <Divider />}{" "}
+                        {index < status.passengers.length - 1 && <Divider />}
                       </div>
                     ))}
                     <Row className="mt-4">
@@ -271,7 +301,6 @@ const App = () => {
           />
         </div>
       </Content>
-
       <Footer style={{ textAlign: "center" }}>
         <FooterUser />
       </Footer>
